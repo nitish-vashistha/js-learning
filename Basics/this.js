@@ -30,10 +30,31 @@
     service.log();
 
     // Method context
-
-
+    // In a method, 'this' refers to the object that owns the method
+    const user = {
+        name: "Alice",
+        greet() {
+            console.log(`Hello, ${this.name}`);
+        }
+    };
+    user.greet();
 
     // Arrow functions & lexical this
-
+    // Arrow functions do not have their own 'this'; they inherit it from the enclosing context
+    const obj = {
+        value: 42,
+        getValue: function() {
+            const arrowFunc = () => {
+                console.log(this.value);
+            };
+            arrowFunc();
+        } 
+    }
+    obj.getValue();
 
     // call, apply, bind
+    // You can explicitly set 'this' using call, apply, or bind
+
+    function introduce(greeting) {
+        console.log(`${greeting}, I am ${this.name}`);
+    }   
